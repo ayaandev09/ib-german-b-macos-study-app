@@ -12,10 +12,13 @@ import {
   Zap,
   BookOpen,
   RotateCcw,
+  Compass,
+  FileCheck,
 } from "lucide-react";
 import { useGermanStudyStore } from "@/store/useGermanStudyStore";
 import { GRAMMAR_POINTS } from "@/data/grammar";
 import { GrammarCategory, GrammarPoint } from "@/data/types";
+import { MathFormula } from "./MathFormula";
 
 export function GrammarLabView() {
   const {
@@ -26,8 +29,6 @@ export function GrammarLabView() {
   } = useGermanStudyStore();
 
   const [selectedPoint, setSelectedPoint] = useState<GrammarPoint>(GRAMMAR_POINTS[0]);
-  const [activeInteractiveCase, setActiveInteractiveCase] = useState<"nom" | "akk" | "dat" | "gen">("akk");
-  const [interactiveGender, setInteractiveGender] = useState<"mask" | "fem" | "neut" | "pl">("mask");
 
   const categories: { id: string; label: string }[] = [
     { id: "all", label: "Alle 18 Regeln" },
@@ -85,9 +86,14 @@ export function GrammarLabView() {
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono font-bold tracking-wider text-amber-400 uppercase">
-                    {point.code} • {point.categoryTitle}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-mono font-bold tracking-wider text-amber-400 uppercase">
+                      {point.code}
+                    </span>
+                    <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-amber-500/15 border border-amber-400/30 text-amber-300">
+                      {point.cefrLevel}
+                    </span>
+                  </div>
 
                   <button
                     onClick={(e) => {
@@ -105,11 +111,17 @@ export function GrammarLabView() {
                   </button>
                 </div>
 
-                <h4 className="text-sm font-bold text-white mb-0.5">
+                <h4 className="text-sm font-bold text-white mb-0.5 leading-snug">
                   {point.title}
                 </h4>
-                <p className="text-[11px] text-amber-300/80 mb-2">
+                
+                {/* Small English Orientation Phrase */}
+                <p className="text-[11px] text-amber-200/90 mb-1.5 font-medium">
                   {point.englishTitle}
+                </p>
+
+                <p className="text-[10px] text-slate-400 line-clamp-1 italic mb-2">
+                  {point.englishExplanation}
                 </p>
 
                 <div className="flex items-center gap-2">
@@ -125,15 +137,20 @@ export function GrammarLabView() {
           })}
         </div>
 
-        {/* Right Column: Deep Rule Studio & Interactive Cheat Tables (7 cols on lg) */}
+        {/* Right Column: Deep Rule Studio, LaTeX Formulas & Interactive Cheat Tables (7 cols on lg) */}
         <div className="lg:col-span-7 space-y-4">
           <div className="p-5 sm:p-6 rounded-3xl bg-slate-900/70 border border-amber-400/30 shadow-xl space-y-5 text-left">
             {/* Header */}
             <div className="flex items-start justify-between pb-3 border-b border-white/10">
               <div>
-                <span className="text-[10px] font-mono font-bold tracking-widest text-amber-400 uppercase block mb-1">
-                  {selectedPoint.code} • {selectedPoint.categoryTitle} • {selectedPoint.level}
-                </span>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-amber-400 uppercase">
+                    {selectedPoint.code} • {selectedPoint.categoryTitle} • {selectedPoint.level}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 border border-amber-400/40 text-amber-300">
+                    NIVEAU: {selectedPoint.cefrLevel}
+                  </span>
+                </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                   {selectedPoint.title}
                 </h2>
@@ -157,18 +174,55 @@ export function GrammarLabView() {
               </button>
             </div>
 
-            {/* Formula Banner */}
-            <div className="p-3 rounded-2xl bg-black/60 border border-amber-400/25 font-mono text-xs text-amber-200">
-              <span className="text-slate-400 text-[10px] block mb-0.5">SYNTAX-FORMEL:</span>
-              {selectedPoint.formula}
+            {/* Small English Navigation & Orientation Guide Box */}
+            <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-400/25 flex flex-col gap-1.5">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300">
+                  <Compass className="w-3.5 h-3.5 text-amber-400" /> English Navigation &amp; Concept Overview
+                </span>
+                <span className="text-[10px] font-mono text-slate-400">
+                  IB Language B Guide
+                </span>
+              </div>
+              <p className="text-xs text-slate-200 font-medium leading-relaxed">
+                {selectedPoint.englishExplanation}
+              </p>
+              <div className="text-[11px] text-amber-200/80 pt-1 border-t border-white/5">
+                <strong className="text-amber-300">When to use in IB Exam:</strong> {selectedPoint.whenToUseEnglish}
+              </div>
             </div>
 
-            {/* Rule Explanation */}
+            {/* LaTeX Mathematical / Syntax Formula Showcase */}
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-black/90 via-slate-950 to-black border border-amber-400/35 shadow-inner">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-amber-400 font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                  SYNTAX-FORMEL &amp; STRUKTURAUFBAU (LATEX)
+                </span>
+                <span className="text-[9px] font-mono text-slate-400">
+                  Formelnotation
+                </span>
+              </div>
+
+              {/* KaTeX Math Formula Rendering */}
+              <div className="p-3.5 rounded-xl bg-black/60 border border-white/10 my-1 overflow-x-auto text-center flex items-center justify-center min-h-[52px]">
+                <MathFormula formula={selectedPoint.latexFormula || selectedPoint.formula} displayMode={true} />
+              </div>
+
+              {/* Text representation */}
+              <div className="text-[11px] font-mono text-slate-300/80 flex items-start gap-2 mt-2 pt-2 border-t border-white/5">
+                <span className="text-slate-500 uppercase text-[9px] shrink-0 mt-0.5">Text-Regel:</span>
+                <span className="text-amber-200/90">{selectedPoint.formula}</span>
+              </div>
+            </div>
+
+            {/* Detailed German Explanation (B1/B2/C1 Content) */}
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-1.5">
-                Regelerklärung & Funktionsweise
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-1.5 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+                Regelerklärung &amp; Funktionsweise (Deutsch)
               </h4>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-white/[0.02] p-3.5 rounded-2xl border border-white/5">
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed bg-white/[0.03] p-3.5 rounded-2xl border border-white/5 font-sans">
                 {selectedPoint.ruleExplanation}
               </p>
             </div>
@@ -206,10 +260,11 @@ export function GrammarLabView() {
               </div>
             )}
 
-            {/* Contextual Examples */}
+            {/* Contextual Examples in German (B1/B2/C1) with English Translations */}
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2">
-                IB Mustersätze mit Hervorhebung
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold mb-2 flex items-center gap-1.5">
+                <FileCheck className="w-3.5 h-3.5 text-emerald-400" />
+                IB Mustersätze &amp; Anwendungsbeispiele
               </h4>
               <div className="space-y-2">
                 {selectedPoint.examples.map((ex, i) => (

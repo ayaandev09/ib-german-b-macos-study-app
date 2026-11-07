@@ -55,10 +55,15 @@ export interface GrammarPoint {
   code: string; // "G1.1"
   title: string;
   englishTitle: string;
+  cefrLevel: "B1" | "B2" | "C1" | "B1/B2" | "B2/C1";
+  englishExplanation: string;
+  whenToUseEnglish: string;
   level: "SL / HL" | "HL Focus";
   importance: "CRITICAL FOUNDATION" | "CRITERION A BOOSTER" | "HIGH-SCORING NUANCE";
   ruleExplanation: string;
   formula: string;
+  latexFormula: string;
+  syntaxSteps?: { label: string; formula: string; description: string }[];
   cheatTable?: {
     headers: string[];
     rows: string[][];
@@ -67,6 +72,7 @@ export interface GrammarPoint {
     german: string;
     english: string;
     highlight: string;
+    cefrTag?: string;
   }[];
   commonMistakes: string[];
   criterionATip: string;

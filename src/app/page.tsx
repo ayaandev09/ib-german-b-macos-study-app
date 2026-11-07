@@ -12,6 +12,7 @@ import { RedemittelDossierView } from "@/components/RedemittelDossierView";
 import { ExamMasteryView } from "@/components/ExamMasteryView";
 import { LiteratureOralLabView } from "@/components/LiteratureOralLabView";
 import { CinematicStartupIntro } from "@/components/CinematicStartupIntro";
+import { AmbientAuroraCanvas } from "@/components/AmbientAuroraCanvas";
 import { ImmersiveAppWalkthrough } from "@/components/ImmersiveAppWalkthrough";
 import { TimedExamSprintModal } from "@/components/TimedExamSprintModal";
 import { KeyboardShortcutsModal } from "@/components/KeyboardShortcutsModal";
@@ -112,33 +113,8 @@ export default function IBGermanBStudyDashboardPage() {
 
   return (
     <div className="relative min-h-screen w-full bg-[#020308] text-slate-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-100 overflow-x-hidden">
-      {/* Background Ambient Glows */}
-      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none" aria-hidden="true">
-        <div
-          className="absolute -top-36 -left-32 w-[520px] h-[520px] rounded-full opacity-20 pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            transform: "translateZ(0)",
-          }}
-        />
-        <div
-          className="absolute top-[32%] -right-36 w-[480px] h-[480px] rounded-full opacity-15 pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(239, 68, 68, 0.16) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            transform: "translateZ(0)",
-          }}
-        />
-        <div
-          className="absolute -bottom-36 left-[22%] w-[520px] h-[520px] rounded-full opacity-15 pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            transform: "translateZ(0)",
-          }}
-        />
-      </div>
+      {/* Background Animated Ambient Aurora Blobs */}
+      <AmbientAuroraCanvas />
 
       {/* Main 3-Column macOS Dashboard Shell */}
       <main
