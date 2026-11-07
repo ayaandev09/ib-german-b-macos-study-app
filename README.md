@@ -1,7 +1,7 @@
 # 🇩🇪 German B Master Codex // IB German B SL & HL
-### The IB German B Study Dashboard for macOS
+### The IB German B Study Dashboard for macOS & Windows
 
-**German B Master Codex** is a native macOS application built for International Baccalaureate (IB) Diploma Language B German students (Standard Level & Higher Level). It combines comprehensive 2020–2026 syllabus coverage across all 5 Prescribed Themes, 25 Subtopics, 18 core Grammar points with KaTeX LaTeX mathematical syntax notation, 10 official Paper 1 Textsorten writing formats, and a 120+ idiomatic Redemittel phrase vault with a warm amber & cognac Liquid Glass bento interface, active revision flipcards, and live desktop widgets.
+**German B Master Codex** is a native cross-platform application built for International Baccalaureate (IB) Diploma Language B German students (Standard Level & Higher Level). It combines comprehensive 2020–2026 syllabus coverage across all 5 Prescribed Themes, 25 Subtopics, 18 core Grammar points with KaTeX LaTeX mathematical syntax notation, 10 official Paper 1 Textsorten writing formats, a 120+ idiomatic Redemittel phrase vault, an Academic Handwritten Notes Studio, and native desktop widgets across both **macOS** (`.app` / `.dmg`) and **Windows** (`.exe` standalone via Tauri v2).
 
 ---
 
@@ -15,7 +15,7 @@ The primary launchpad provides a high-level view of your syllabus progress and c
 * **StudyMiniHomepage Capsule**: Live widget telemetry console with `• Live Widget Synced` indicator, multi-template size switcher (`Small`, `Medium`, `Large`), circular mastery gauge, and completion toggles.
 * **Theme Context Overview Banner**: Strategic thematic context, cultural DACH anchors (Germany, Austria, Switzerland), and instant subtopic filter pills.
 * **Analytical Pro Inspector**: 4-tab sidebar (`🎯 Cram`, `💬 Phrasen`, `👑 Kultur`, `📝 Notizen`) featuring interactive active recall flipcards, official Examiner Band 7–8 criteria (Criteria A & B), and common student pitfall alerts.
-* **Global Spotlight Search**: Press `⌘K` to search across all themes, grammar rules, textsorten conventions, and oral phrases.
+* **Global Spotlight Search**: Press `⌘K` (macOS) or `Ctrl+K` (Windows) to search across all themes, grammar rules, textsorten conventions, and oral phrases.
 
 ---
 
@@ -48,17 +48,27 @@ Essential idiomatic connectors and debate phrases for Paper 1 and the Individual
 
 ---
 
-### 5. Prüfungs-Sprint & Grade 7 Exam Simulator
+### 5. ✍️ Academic Handwritten Notes Studio
+A distraction-free, analog-feel digital notebook seamlessly embedded inside the analytical inspector (`📝 Notizen`) and theme dossiers:
+* **Ruled Notebook Texture**: Authentic 28px repeating guide lines engineered specifically for German vocabulary retention, grammar conjugations, and draft oral speeches.
+* **Curated Academic Handwriting Typography**: Precision-styled cursive font stack featuring *Caveat*, *Kalam*, *Noteworthy*, and *Snell Roundhand*.
+* **Live Telemetry Console**: Real-time counter tracking words, characters, and reading duration.
+* **Action Shortcuts**: Quick bullet insertion (`• Stichpunkt`), quotation/idiom framing (`"Beispiel"`), one-click clipboard copying, and canvas reset.
+* **100% Offline Persistence**: Automatically persists draft arguments and notes on-device via `localStorage`.
+
+---
+
+### 6. Prüfungs-Sprint & Grade 7 Exam Simulator
 <img width="1441" height="928" alt="Exam Simulator" src="docs/05-exam-simulator.png" />
 
 Full assessment breakdown and interactive grading tools:
 * **Interactive Paper 1 Score Predictor**: Real-time Grade 7 calculator modeling Criterion A (Language /12), Criterion B (Message /12), and Criterion C (Conceptual Understanding /6) with official mark boundaries.
 * **Component Breakdown**: Visual guides for Paper 1 (Writing 25%), Paper 2 (Listening & Reading 50%), and Individual Oral (Internal Assessment 25%).
-* **Timed Exam Sprint (`⌘E`)**: 15m, 30m, and 45m timed drills with randomized Paper 1 prompts, live word counter, and register guidance.
+* **Timed Exam Sprint (`⌘E` / `Ctrl+E`)**: 15m, 30m, and 45m timed drills with randomized Paper 1 prompts, live word counter, and register guidance.
 
 ---
 
-### 6. Desktop Widgets (macOS WidgetKit)
+### 7. Desktop Widgets (macOS WidgetKit)
 Keep revision top-of-mind without keeping the full app open:
 * **Live Study Counter**: Displays active study streak, remaining syllabus subtopics, and current German study target on your desktop wallpaper or Notification Center.
 * **Multi-Size Liquid Glass Templates**: Available in Small, Medium, and Large dossier view.
@@ -68,10 +78,10 @@ Keep revision top-of-mind without keeping the full app open:
 
 ## ⌨️ Keyboard Shortcuts
 
-* `⌘ + K`: Open quick Spotlight search for themes, grammar points, and text types
-* `⌘ + B`: Toggle sidebar navigation drawer
-* `⌘ + I`: Toggle Pro Analytical Inspector
-* `⌘ + E`: Launch Timed Exam Sprint simulation
+* `⌘ + K` / `Ctrl + K`: Open quick Spotlight search for themes, grammar points, and text types
+* `⌘ + B` / `Ctrl + B`: Toggle sidebar navigation drawer
+* `⌘ + I` / `Ctrl + I`: Toggle Pro Analytical Inspector
+* `⌘ + E` / `Ctrl + E`: Launch Timed Exam Sprint simulation
 * `1`: Switch to Prescribed Themes bento view
 * `2`: Switch to Grammar Lab (`Grammatik`)
 * `3`: Switch to Textsorten Vault (`Textsorten`)
@@ -83,29 +93,21 @@ Keep revision top-of-mind without keeping the full app open:
 
 ---
 
-## 🛠️ Technical Highlights
+## 🛠️ Technical Highlights & Architecture
 
 * **Modern Web Core**: Built using Next.js 16, React 19, and Tailwind CSS.
-* **Mathematical Notation**: High-performance KaTeX engine with zero horizontal overflow.
+* **Mathematical & Grammatical Notation**: High-performance KaTeX engine with zero horizontal overflow.
 * **Native macOS Shell**: Runs inside an Apple AppKit and WKWebView container with smooth 120 FPS animations.
-* **On-Device Storage**: Local state management persists notes, bookmarks, and progress directly on your Mac via Zustand.
+* **Native Windows Shell**: High-efficiency standalone executable compiled via **Tauri v2** and Microsoft Edge WebView2 (~8.4 MB executable).
+* **On-Device Storage**: Local state management persists notes, bookmarks, and progress directly on your device via Zustand and `localStorage`.
 * **Zero Dependencies**: Fully self-contained local build requiring no external cloud databases.
 
 ---
 
-## 🎓 IB CAS Alignment
+## 📦 Installation Instructions
 
-* **Creativity**: Engineering an elegant, native macOS study dashboard featuring an amber Liquid Glass visual identity, interactive KaTeX grammar matrices, and native desktop widgets.
-* **Service**: Publishing open-source software to empower secondary school German language learners globally with accessible, distraction-free study resources.
-
----
-
-## 🛠️ macOS Installation Instructions
-
-Because this is a free, open-source app, macOS Gatekeeper may block it from opening initially because it hasn't been signed by a paid Apple Developer account. 
-
-Here is how to safely install and open it:
-
+### 🍎 macOS Installation (.dmg)
+Because this is a free, open-source app, macOS Gatekeeper may block it from opening initially because it hasn't been signed by a paid Apple Developer account:
 1. Download the latest `IBGermanCodex-macOS-v1.0.1.dmg` file from the Releases page and double-click to open it.
 2. Drag the **IB German B** app into your **Applications** folder.
 3. Try to open the app by double-clicking it. You will see a warning that it cannot be opened. Click **Done** or **OK**.
@@ -113,3 +115,38 @@ Here is how to safely install and open it:
 5. Scroll down to the **Security** section. You will see a message stating the app was blocked to protect your Mac.
 6. Click the **Open Anyway** button next to that message.
 7. Enter your Mac password or use Touch ID, then click **Open** on the final popup.
+
+*Note: You only need to do this the very first time. Afterward, you can open the app normally from your Launchpad or Spotlight.*
+
+### 🪟 Windows Installation (.exe)
+1. Download `IBGermanCodex.exe` from the latest GitHub Release or your download folder.
+2. Place `IBGermanCodex.exe` anywhere on your computer (e.g. Desktop or `C:\Program Files`).
+3. Double-click `IBGermanCodex.exe` to launch immediately.
+4. If Windows SmartScreen displays *"Windows protected your PC"*, click **More info** and select **Run anyway**.
+5. Powered by Microsoft Edge WebView2 (built into Windows 10 & 11).
+
+---
+
+## 🏗️ Building from Source
+
+### Web Bundle
+```bash
+npm install
+npm run build
+```
+
+### Windows Standalone (.exe via Tauri v2)
+```bash
+# Direct build on Windows
+cargo tauri build
+
+# Or cross-compile from macOS with cargo-xwin
+cargo xwin build --release --target x86_64-pc-windows-msvc
+```
+
+---
+
+## 🎓 IB CAS Alignment
+
+* **Creativity**: Engineering an elegant, native cross-platform study dashboard featuring an amber Liquid Glass visual identity, interactive KaTeX grammar matrices, handwritten notes canvas, and native desktop widgets.
+* **Service**: Publishing open-source software to empower secondary school German language learners globally with accessible, distraction-free study resources.

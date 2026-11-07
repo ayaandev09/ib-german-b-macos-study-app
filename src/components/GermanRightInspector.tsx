@@ -24,6 +24,7 @@ import { useGermanStudyStore } from "@/store/useGermanStudyStore";
 import { ALL_SUBTOPICS, IB_THEMES } from "@/data/themes";
 import { REDEMITTEL_DATABASE } from "@/data/redemittel";
 import { RecallFlipCard } from "@/components/RecallFlipCard";
+import { AcademicNotesSurface } from "@/components/AcademicNotesSurface";
 
 type InspectorTab = "recall" | "redemittel" | "kultur" | "notizen";
 
@@ -315,29 +316,14 @@ export function GermanRightInspector() {
 
             {/* TAB 4: EIGENE NOTIZEN & SCRATCHPAD */}
             {activeTab === "notizen" && (
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
-                    <Edit3 className="w-3 h-3" />
-                    Themen-Notizbuch ({activeTopic.displayCode})
-                  </span>
-                  <button
-                    onClick={handleCopyNote}
-                    className="text-[10px] font-mono text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer"
-                  >
-                    {copiedNote ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                    <span>{copiedNote ? "Kopiert" : "Kopieren"}</span>
-                  </button>
-                </div>
-
-                <textarea
-                  value={userNote}
-                  onChange={(e) => setTopicNote(activeTopic.id, e.target.value)}
-                  placeholder={`Eigene Notizen, Vokabeln oder Prüfungsideen zu ${activeTopic.displayCode} festhalten... (wird automatisch lokal gespeichert)`}
-                  rows={8}
-                  className="w-full p-3 rounded-2xl bg-black/50 border border-white/10 text-xs text-slate-200 focus:outline-none focus:border-amber-400/50 resize-none font-sans leading-relaxed placeholder:text-slate-500"
-                />
-              </div>
+              <AcademicNotesSurface
+                note={userNote}
+                onChange={(text) => setTopicNote(activeTopic.id, text)}
+                title="Themen-Notizen & DACH-Glossen"
+                itemCode={activeTopic.displayCode}
+                accentColor="#f59e0b"
+                minRows={8}
+              />
             )}
           </div>
         </div>

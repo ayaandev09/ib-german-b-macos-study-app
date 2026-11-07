@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { useGermanStudyStore } from "@/store/useGermanStudyStore";
 import { IB_THEMES, ALL_SUBTOPICS } from "@/data/themes";
+import { AcademicNotesSurface } from "@/components/AcademicNotesSurface";
 import { Subtopic, ThemeId } from "@/data/types";
 import { RecallFlipCard } from "@/components/RecallFlipCard";
 
@@ -389,21 +390,14 @@ export function ThemesBentoView() {
 
         {/* Optional Scratchpad Card */}
         {showScratchpad && (
-          <div className="liquid-glass-bento rounded-3xl p-5 border-amber-400/40 bg-black/40 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-amber-300 font-bold text-xs font-mono">
-                <StickyNote className="w-4 h-4 text-amber-400" />
-                <span>PERSÖNLICHER REVISIONS-NOTIZBLOCK · {activeTopic.displayCode}</span>
-              </div>
-              <span className="text-[11px] font-mono text-slate-400">
-                Wird automatisch gespeichert
-              </span>
-            </div>
-            <textarea
-              value={activeNote}
-              onChange={(e) => setTopicNote(activeTopic.id, e.target.value)}
-              placeholder={`Eigene Notizen, Vokabeln oder Gliederung für ${activeTopic.title} hier eingeben...`}
-              className="w-full h-28 bg-slate-950/80 border border-white/10 rounded-2xl p-3 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400/60 custom-scrollbar resize-none"
+          <div className="animate-in fade-in duration-200">
+            <AcademicNotesSurface
+              note={activeNote}
+              onChange={(text) => setTopicNote(activeTopic.id, text)}
+              title="Persönlicher Revisions-Notizblock"
+              itemCode={activeTopic.displayCode}
+              accentColor="#f59e0b"
+              minRows={5}
             />
           </div>
         )}
