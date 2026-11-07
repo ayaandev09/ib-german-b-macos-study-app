@@ -19,8 +19,8 @@ export function RecallFlipCard({
   title,
   prompt,
   answer,
-  accent = "#f59e0b",
-  secondary = "#ef4444",
+  accent = "#d97706",
+  secondary = "#991b1b",
   meta = "AKTIVES ERINNERN · ACTIVE RECALL",
 }: RecallFlipCardProps) {
   const [flipped, setFlipped] = useState(false);
@@ -90,7 +90,7 @@ export function RecallFlipCard({
               className="relative min-h-[176px] w-full flex flex-col justify-between overflow-hidden rounded-3xl p-5 shadow-2xl border transition-colors backdrop-blur-xl"
               style={{
                 borderColor: `${accent}40`,
-                backgroundImage: `radial-gradient(120% 140% at ${tilt.glareX}% ${tilt.glareY}%, ${accent}28, transparent 58%), linear-gradient(145deg, rgba(255,255,255,0.07), rgba(4,8,18,0.92))`,
+                backgroundImage: `radial-gradient(120% 140% at ${tilt.glareX}% ${tilt.glareY}%, ${accent}28, transparent 58%), linear-gradient(145deg, rgba(255,255,255,0.075), rgba(30,16,8,0.92))`,
               }}
             >
               <div
@@ -156,7 +156,7 @@ export function RecallFlipCard({
               className="relative min-h-[176px] w-full flex flex-col justify-between overflow-hidden rounded-3xl p-5 shadow-2xl border backdrop-blur-xl"
               style={{
                 borderColor: `${secondary}60`,
-                backgroundImage: `radial-gradient(120% 140% at ${tilt.glareX}% ${tilt.glareY}%, ${secondary}36, transparent 60%), linear-gradient(145deg, rgba(255,255,255,0.07), rgba(4,8,18,0.95))`,
+                backgroundImage: `radial-gradient(120% 140% at ${tilt.glareX}% ${tilt.glareY}%, ${secondary}36, transparent 60%), linear-gradient(145deg, rgba(255,255,255,0.075), rgba(28,12,6,0.94))`,
               }}
             >
               <div className="relative z-10 flex items-center justify-between gap-3">
