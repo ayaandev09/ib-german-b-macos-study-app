@@ -42,6 +42,10 @@ interface GermanStudyState {
   toggleGrammarMastered: (grammarId: string) => void;
   practicedTextsorten: string[];
   toggleTextsortePracticed: (textsorteId: string) => void;
+  topicNotes: Record<string, string>;
+  setTopicNote: (topicId: string, note: string) => void;
+  goToPrevTopic: () => void;
+  goToNextTopic: () => void;
 
   // UI Panels
   sidebarCollapsed: boolean;
@@ -171,6 +175,35 @@ export const useGermanStudyStore = create<GermanStudyState>((set, get) => {
         }
         return { practicedTextsorten: next };
       });
+    },
+
+    topicNotes: loadFromStorage("topicNotes", {}),
+    setTopicNote: (topicId, note) => {
+      set((state) => {
+        const next = { ...state.topicNotes, [topicId]: note };
+        if (typeof window !== "undefined") {
+          localStorage.setItem("ib_german_codex_topicNotes", JSON.stringify(next));
+        }
+        return { topicNotes: next };
+      });
+    },
+
+    goToPrevTopic: () => {
+      const currentId = get().activeTopicId;
+      const idx = ALL_SUBTOPICS.findIndex((s) => s.id === currentId);
+      if (idx > 0) {
+        const prev = ALL_SUBTOPICS[idx - 1];
+        set({ activeTopicId: prev.id, activeThemeId: prev.themeId });
+      }
+    },
+
+    goToNextTopic: () => {
+      const currentId = get().activeTopicId;
+      const idx = ALL_SUBTOPICS.findIndex((s) => s.id === currentId);
+      if (idx >= 0 && idx < ALL_SUBTOPICS.length - 1) {
+        const next = ALL_SUBTOPICS[idx + 1];
+        set({ activeTopicId: next.id, activeThemeId: next.themeId });
+      }
     },
 
     sidebarCollapsed: false,

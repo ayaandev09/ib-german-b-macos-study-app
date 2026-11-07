@@ -38,7 +38,7 @@ export function ExamMasteryView() {
         {EXAM_OVERVIEW.components.map((comp, idx) => (
           <div
             key={idx}
-            className="p-4 rounded-3xl bg-slate-900/60 border border-white/10 space-y-2 flex flex-col justify-between"
+            className="liquid-glass-bento p-4 rounded-3xl border border-amber-400/20 space-y-2 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-1">
@@ -65,7 +65,7 @@ export function ExamMasteryView() {
       </div>
 
       {/* Interactive Score Estimator & Calculator Card */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-500/10 via-black/50 to-slate-900 border border-amber-400/30 shadow-xl space-y-4">
+      <div className="liquid-glass-bento p-5 sm:p-6 rounded-3xl border border-amber-400/35 shadow-xl space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
           <div>
             <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest block mb-0.5">

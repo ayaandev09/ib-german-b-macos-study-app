@@ -123,7 +123,9 @@ export function TextsortenVaultView() {
 
         {/* Right Column: Blueprint, Mandatory Conventions & Model Template (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="p-5 sm:p-6 rounded-3xl bg-slate-900/70 border border-amber-400/30 shadow-xl space-y-5 text-left">
+          <div className="liquid-glass-bento rounded-3xl p-5 sm:p-6 border border-amber-400/35 shadow-2xl space-y-5 text-left relative overflow-hidden">
+            {/* Specular Radial Glow */}
+            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-20 bg-amber-500/30" />
             {/* Header */}
             <div className="flex items-start justify-between pb-3 border-b border-white/10">
               <div>

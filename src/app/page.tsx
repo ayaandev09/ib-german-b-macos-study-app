@@ -117,8 +117,8 @@ export default function IBGermanBStudyDashboardPage() {
       <AmbientAuroraCanvas />
 
       {/* Main 3-Column macOS Dashboard Shell */}
-      <main
-        className={`relative z-10 flex-1 w-full max-w-[1720px] mx-auto p-2.5 sm:p-4 flex gap-3 transition-opacity duration-700 mac-dashboard-shell ${
+      <div
+        className={`relative z-10 w-full max-w-[1720px] mx-auto p-2.5 sm:p-4 flex gap-4 xl:gap-5 items-start transition-opacity duration-700 mac-dashboard-shell ${
           showMainUI ? "app-revealed opacity-100" : "opacity-0"
         }`}
       >
@@ -126,9 +126,9 @@ export default function IBGermanBStudyDashboardPage() {
         <GermanSidebar />
 
         {/* Middle Column: Top Command Bar & Active Study View */}
-        <div
+        <main
           data-tour="main-workspace"
-          className="flex-1 flex flex-col min-w-0 max-w-full overflow-hidden"
+          className="flex-1 min-w-0 w-full pb-36 flex flex-col"
         >
           {/* Top Command Bar */}
           <TopCommandBar
@@ -137,7 +137,7 @@ export default function IBGermanBStudyDashboardPage() {
           />
 
           {/* Active View Container */}
-          <div className="flex-1 overflow-y-auto pr-0.5 custom-scrollbar pb-6">
+          <div className="space-y-4">
             {viewMode === "themen" && <ThemesBentoView />}
             {viewMode === "grammatik" && <GrammarLabView />}
             {viewMode === "textsorten" && <TextsortenVaultView />}
@@ -145,11 +145,11 @@ export default function IBGermanBStudyDashboardPage() {
             {viewMode === "pruefung" && <ExamMasteryView />}
             {viewMode === "literatur" && <LiteratureOralLabView />}
           </div>
-        </div>
+        </main>
 
         {/* Right Column: Analytical Inspector */}
         <GermanRightInspector />
-      </main>
+      </div>
 
       {/* Startup Diagnostic Intro Sequence */}
       <AnimatePresence>

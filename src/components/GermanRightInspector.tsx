@@ -66,7 +66,7 @@ export function GermanRightInspector() {
   return (
     <aside
       data-tour="analytical-inspector"
-      className="w-80 lg:w-88 shrink-0 liquid-glass-panel rounded-3xl p-3 sm:p-4 flex flex-col gap-3 h-[calc(100vh-1.5rem)] sticky top-3 select-none overflow-hidden transition-all z-10 border border-white/10 shadow-xl"
+      className="w-80 lg:w-88 shrink-0 liquid-glass-panel rounded-3xl p-3 sm:p-4 flex flex-col gap-3 h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all z-10 border border-white/10 shadow-xl"
     >
       {/* Header */}
       <div className="flex items-center justify-between pb-2 border-b border-white/10">

@@ -81,8 +81,8 @@ export function GrammarLabView() {
                 onClick={() => setSelectedPoint(point)}
                 className={`p-3.5 rounded-2xl border transition-all cursor-pointer text-left relative overflow-hidden ${
                   isSelected
-                    ? "bg-amber-500/20 border-amber-400/50 shadow-lg shadow-amber-500/10 text-white"
-                    : "bg-slate-900/40 border-white/10 hover:border-white/20 text-slate-300"
+                    ? "bg-gradient-to-r from-amber-500/25 via-amber-500/10 to-transparent border-amber-400/60 shadow-lg shadow-amber-500/15 text-white ring-1 ring-amber-400/40"
+                    : "bg-gradient-to-r from-white/[0.04] to-transparent border-white/10 hover:border-amber-400/30 text-slate-300"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
@@ -139,7 +139,9 @@ export function GrammarLabView() {
 
         {/* Right Column: Deep Rule Studio, LaTeX Formulas & Interactive Cheat Tables (7 cols on lg) */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="p-5 sm:p-6 rounded-3xl bg-slate-900/70 border border-amber-400/30 shadow-xl space-y-5 text-left">
+          <div className="liquid-glass-bento rounded-3xl p-5 sm:p-6 border border-amber-400/35 shadow-2xl space-y-5 text-left relative overflow-hidden">
+            {/* Specular Radial Glow */}
+            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-20 bg-amber-500/30" />
             {/* Header */}
             <div className="flex items-start justify-between pb-3 border-b border-white/10">
               <div>

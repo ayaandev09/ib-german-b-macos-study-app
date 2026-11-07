@@ -111,7 +111,7 @@ export function RedemittelDossierView() {
           <motion.div
             key={item.id}
             whileHover={{ y: -2 }}
-            className="p-4 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between text-left space-y-3 relative group"
+            className="liquid-glass-bento p-4 sm:p-5 rounded-3xl border border-amber-400/25 hover:border-amber-400/60 transition-all flex flex-col justify-between text-left space-y-3 relative group"
           >
             <div>
               <div className="flex items-center justify-between mb-2">
