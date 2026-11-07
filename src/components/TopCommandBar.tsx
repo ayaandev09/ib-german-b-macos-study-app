@@ -17,6 +17,7 @@ import {
   BookOpenCheck,
 } from "lucide-react";
 import { useGermanStudyStore, GermanNavMode } from "@/store/useGermanStudyStore";
+import { ALL_SUBTOPICS } from "@/data/themes";
 import { IBGermanAppLogo } from "./IBGermanAppLogo";
 
 interface TopCommandBarProps {
@@ -40,7 +41,10 @@ export function TopCommandBar({
     openExamSprint,
     openSpotlight,
     setIsShortcutsOpen,
+    activeTopicId,
   } = useGermanStudyStore();
+
+  const activeTopic = ALL_SUBTOPICS.find((t) => t.id === activeTopicId) || ALL_SUBTOPICS[0];
 
   const navModes: { id: GermanNavMode; label: string; icon: React.ReactNode }[] = [
     {
@@ -110,10 +114,10 @@ export function TopCommandBar({
             </div>
             <div className="min-w-0 leading-tight">
               <span className="text-[9px] font-mono font-bold tracking-[0.2em] text-amber-400 uppercase block truncate">
-                DEUTSCHE SPRACHE B // IB SL & HL
+                GERMAN B // 2026
               </span>
               <span className="text-xs font-semibold text-white tracking-tight block truncate">
-                German B Master Codex
+                German B Master Codex / {activeTopic?.displayCode || "T1.1"}
               </span>
             </div>
           </button>

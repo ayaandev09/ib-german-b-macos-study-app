@@ -12,10 +12,14 @@ import {
   BookOpen,
   Award,
   Filter,
+  Flame,
+  Clock,
+  RotateCcw,
 } from "lucide-react";
 import { useGermanStudyStore } from "@/store/useGermanStudyStore";
 import { IB_THEMES, ALL_SUBTOPICS } from "@/data/themes";
 import { ThemeId } from "@/data/types";
+import { IBGermanAppLogo } from "./IBGermanAppLogo";
 
 export function GermanSidebar() {
   const {
@@ -66,6 +70,7 @@ export function GermanSidebar() {
 
   const totalCompleted = completedTopics.length;
   const totalSubtopics = ALL_SUBTOPICS.length;
+  const progressPercent = totalSubtopics > 0 ? Math.round((totalCompleted / totalSubtopics) * 100) : 0;
 
   if (sidebarCollapsed) {
     return null;
@@ -74,38 +79,64 @@ export function GermanSidebar() {
   return (
     <aside
       data-tour="syllabus-sidebar"
-      className="w-72 lg:w-80 shrink-0 liquid-glass-panel rounded-3xl p-3 sm:p-4 flex flex-col gap-3 h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all z-10 border border-white/10 shadow-xl"
+      className="w-72 lg:w-80 shrink-0 liquid-glass-panel rounded-3xl p-3 sm:p-4 flex flex-col gap-2.5 h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all z-10 border border-white/10 shadow-xl"
     >
-      {/* Header with Progress Counter */}
-      <div className="flex items-center justify-between pb-2 border-b border-white/10">
-        <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300">
-            <Compass className="w-4 h-4" />
+      {/* Brand Header Matching Macbeth */}
+      <div className="flex items-center justify-between pb-2.5 border-b border-white/10 shrink-0">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400/20 via-orange-500/15 to-rose-500/20 border border-amber-400/35 flex items-center justify-center p-1 shadow-inner shrink-0">
+            <IBGermanAppLogo className="w-full h-full object-contain" />
           </div>
-          <div>
-            <span className="text-[10px] font-mono font-bold tracking-wider text-amber-400 uppercase block">
-              IB LEHRPLAN
-            </span>
-            <span className="text-xs font-semibold text-white tracking-tight">
-              5 Pflichtthemen
-            </span>
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-amber-400 font-bold truncate">
+              <span>DEUTSCHE SPRACHE B</span>
+              <span className="text-white/40">//</span>
+              <span>2026</span>
+            </div>
+            <h2 className="text-xs font-semibold text-white truncate">
+              German B Master Codex
+            </h2>
           </div>
         </div>
-
-        {/* Live Completion Pill */}
-        <div
-          title={`${totalCompleted} von ${totalSubtopics} Subthemen gemeistert`}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/50 border border-amber-400/30 text-amber-300 font-mono text-[11px] font-bold"
+        <button
+          onClick={() => window.location.reload()}
+          title="Dashboard neu laden"
+          className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
         >
-          <Award className="w-3.5 h-3.5 text-amber-400" />
-          <span>
-            {totalCompleted}/{totalSubtopics}
+          <RotateCcw className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
+      {/* Progress Telemetry Meter Box Matching Macbeth */}
+      <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 shrink-0">
+        <div className="flex items-center justify-between text-xs mb-1.5">
+          <span className="text-slate-300 font-medium flex items-center gap-1.5">
+            <Flame className="w-3.5 h-3.5 text-amber-400" />
+            Lehrplan-Reife
+          </span>
+          <span className="font-mono text-amber-300 font-semibold">
+            {totalCompleted}/{totalSubtopics} ({progressPercent}%)
+          </span>
+        </div>
+
+        <div className="w-full h-2 rounded-full bg-slate-900/90 overflow-hidden p-0.5 border border-white/10">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-rose-500 via-amber-400 to-emerald-400 transition-all duration-500"
+            style={{ width: `${Math.max(progressPercent, 4)}%` }}
+          />
+        </div>
+
+        <div className="flex items-center justify-between text-[10px] text-slate-400 mt-1.5 font-mono">
+          <span>{totalSubtopics} Subthemen</span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-3 h-3 text-amber-300" />
+            74m verbleibend
           </span>
         </div>
       </div>
 
-      {/* Quick Search & Filter Bar */}
-      <div className="relative">
+      {/* Quick Search Bar */}
+      <div className="relative shrink-0">
         <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
         <input
           type="text"
@@ -179,7 +210,7 @@ export function GermanSidebar() {
                           key={sub.id}
                           className={`flex items-center justify-between p-2 rounded-xl text-xs transition-all ${
                             isActive
-                              ? "bg-amber-500/20 border border-amber-400/40 text-amber-200 shadow-sm"
+                              ? "bg-amber-500/20 border border-amber-400/50 text-white shadow-sm"
                               : "hover:bg-white/5 text-slate-300"
                           }`}
                         >
@@ -188,7 +219,7 @@ export function GermanSidebar() {
                             onClick={() => setActiveTopic(sub.id)}
                             className="flex-1 text-left min-w-0 pr-2 cursor-pointer flex items-center gap-1.5"
                           >
-                            <span className="text-[10px] font-mono text-amber-400/80 shrink-0">
+                            <span className="text-[10px] font-mono text-amber-300 font-bold px-1.5 py-0.5 rounded bg-white/10 shrink-0">
                               {sub.displayCode}
                             </span>
                             <span className="truncate font-medium">
@@ -220,6 +251,12 @@ export function GermanSidebar() {
             </div>
           );
         })}
+      </div>
+
+      {/* Bottom Footer Bar Matching Macbeth */}
+      <div className="mt-auto pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-400 shrink-0">
+        <span>IB GERMAN B SL/HL</span>
+        <span>5 THEMEN • 25 SUBTHEMEN</span>
       </div>
     </aside>
   );

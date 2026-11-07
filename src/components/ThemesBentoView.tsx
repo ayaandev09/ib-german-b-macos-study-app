@@ -81,6 +81,51 @@ export function ThemesBentoView() {
   return (
     <div className="space-y-6 liquid-view-enter pb-12">
       {/* =====================================================================
+          THEME CONTEXT BANNER - 100% FULL-WIDTH NATIVE CARD (MACBETH MATCH)
+          ===================================================================== */}
+      <div className="liquid-glass-bento rounded-3xl p-5 border border-white/15 shadow-xl bg-gradient-to-br from-white/[0.07] to-white/[0.02] backdrop-blur-xl space-y-3">
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="p-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-400/30 shrink-0">
+              <BookOpen className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <span className="text-[10px] font-mono font-bold tracking-wider text-amber-400 uppercase block">
+                THEMA {activeTheme.themeNumber} ÜBERBLICK
+              </span>
+              <h2 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
+                {activeTheme.title} · {activeTheme.englishTitle}
+              </h2>
+            </div>
+          </div>
+          <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-400/15 text-amber-300 border border-amber-400/30 shrink-0">
+            {activeTheme.subtopics.length} Subthemen
+          </span>
+        </div>
+
+        <p className="text-xs sm:text-sm text-slate-200/90 leading-relaxed w-full">
+          {activeTheme.description}
+        </p>
+
+        <div className="pt-1 flex flex-wrap items-center gap-2">
+          <span className="text-[11px] font-mono text-slate-400 mr-1">Schwerpunkte:</span>
+          {activeTheme.subtopics.map((sub) => (
+            <button
+              key={sub.id}
+              onClick={() => handleSelectTopic(sub.id)}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-semibold border transition-all cursor-pointer ${
+                sub.id === activeTopic.id
+                  ? "bg-amber-500/25 border-amber-400/60 text-white shadow-sm"
+                  : "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {sub.displayCode} {sub.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* =====================================================================
           1. ACTIVE FOCUS SUBTOPIC FLAGSHIP BENTO CARD (MATCHING 4 FLAGSHIPS)
           ===================================================================== */}
       <section className="space-y-4" id="active-subtopic-focus">

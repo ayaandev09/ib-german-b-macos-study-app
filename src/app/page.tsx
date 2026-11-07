@@ -14,6 +14,7 @@ import { LiteratureOralLabView } from "@/components/LiteratureOralLabView";
 import { CinematicStartupIntro } from "@/components/CinematicStartupIntro";
 import { AmbientAuroraCanvas } from "@/components/AmbientAuroraCanvas";
 import { WidgetBridge } from "@/components/WidgetBridge";
+import { StudyMiniHomepage } from "@/components/StudyMiniHomepage";
 import { ImmersiveAppWalkthrough } from "@/components/ImmersiveAppWalkthrough";
 import { TimedExamSprintModal } from "@/components/TimedExamSprintModal";
 import { KeyboardShortcutsModal } from "@/components/KeyboardShortcutsModal";
@@ -113,7 +114,7 @@ export default function IBGermanBStudyDashboardPage() {
   }, [toggleInspector, toggleExamSprint, setIsShortcutsOpen, setViewMode]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#020308] text-slate-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-100 overflow-x-hidden">
+    <div className="relative min-h-screen w-full bg-[#060402] text-slate-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-100 overflow-x-hidden">
       {/* Background Animated Ambient Aurora Blobs */}
       <AmbientAuroraCanvas />
       {/* Real-time WidgetKit Sync Bridge */}
@@ -138,6 +139,9 @@ export default function IBGermanBStudyDashboardPage() {
             onOpenWalkthrough={() => setIsWalkthroughOpen(true)}
             onOpenDiagnostics={() => setIsStartupActive(true)}
           />
+
+          {/* Mini Homepage & Live Widget Telemetry Hub (Macbeth Match) */}
+          <StudyMiniHomepage />
 
           {/* Active View Container */}
           <div className="space-y-4">

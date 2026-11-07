@@ -47,6 +47,10 @@ interface GermanStudyState {
   goToPrevTopic: () => void;
   goToNextTopic: () => void;
 
+  // Widget Template Switcher
+  widgetTemplate: "small" | "medium" | "large";
+  setWidgetTemplate: (size: "small" | "medium" | "large") => void;
+
   // UI Panels
   sidebarCollapsed: boolean;
   toggleSidebar: () => void;
@@ -205,6 +209,9 @@ export const useGermanStudyStore = create<GermanStudyState>((set, get) => {
         set({ activeTopicId: next.id, activeThemeId: next.themeId });
       }
     },
+
+    widgetTemplate: "medium",
+    setWidgetTemplate: (size) => set({ widgetTemplate: size }),
 
     sidebarCollapsed: false,
     toggleSidebar: () => set((state) => ({ sidebarCollapsed: !state.sidebarCollapsed })),
