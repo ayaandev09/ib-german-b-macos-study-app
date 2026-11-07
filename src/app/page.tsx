@@ -13,6 +13,7 @@ import { ExamMasteryView } from "@/components/ExamMasteryView";
 import { LiteratureOralLabView } from "@/components/LiteratureOralLabView";
 import { CinematicStartupIntro } from "@/components/CinematicStartupIntro";
 import { AmbientAuroraCanvas } from "@/components/AmbientAuroraCanvas";
+import { WidgetBridge } from "@/components/WidgetBridge";
 import { ImmersiveAppWalkthrough } from "@/components/ImmersiveAppWalkthrough";
 import { TimedExamSprintModal } from "@/components/TimedExamSprintModal";
 import { KeyboardShortcutsModal } from "@/components/KeyboardShortcutsModal";
@@ -115,6 +116,8 @@ export default function IBGermanBStudyDashboardPage() {
     <div className="relative min-h-screen w-full bg-[#020308] text-slate-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-100 overflow-x-hidden">
       {/* Background Animated Ambient Aurora Blobs */}
       <AmbientAuroraCanvas />
+      {/* Real-time WidgetKit Sync Bridge */}
+      <WidgetBridge />
 
       {/* Main 3-Column macOS Dashboard Shell */}
       <div
