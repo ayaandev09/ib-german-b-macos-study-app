@@ -1,16 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Sparkles,
   ArrowRight,
   Compass,
   Clock,
-  Award,
-  Zap,
-  CheckCircle2,
-  BookOpen,
 } from "lucide-react";
 import { useGermanStudyStore } from "@/store/useGermanStudyStore";
 import { ALL_SUBTOPICS } from "@/data/themes";
@@ -85,7 +81,7 @@ export function CinematicStartupIntro({
         clearInterval(timer);
         handleDismiss();
       }
-    }, 1100);
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isOpen, handleDismiss]);
@@ -130,8 +126,7 @@ export function CinematicStartupIntro({
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        filter: "blur(16px)",
-        transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
       }}
       onClick={handleDismiss}
       className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 select-none bg-[#020308] backdrop-blur-2xl overflow-hidden cursor-pointer"
@@ -140,53 +135,38 @@ export function CinematicStartupIntro({
           "radial-gradient(circle at 50% 35%, rgba(245, 158, 11, 0.20) 0%, rgba(2, 3, 8, 0.98) 75%)",
       }}
     >
-      {/* Dynamic Ambient Aura Blobs */}
-      <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-amber-500/15 blur-[110px] pointer-events-none"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.14, 0.24, 0.14],
-          x: [0, 24, 0],
-          y: [0, 18, 0],
-        }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      {/* Static GPU-composited Ambient Aura Blobs (Zero CPU overhead) */}
+      <div
+        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-amber-500/15 blur-[80px] pointer-events-none"
+        style={{ transform: "translateZ(0)" }}
       />
-      <motion.div
-        className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-red-500/12 blur-[110px] pointer-events-none"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.12, 0.20, 0.12],
-          x: [0, -24, 0],
-          y: [0, -18, 0],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      <div
+        className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-red-500/12 blur-[80px] pointer-events-none"
+        style={{ transform: "translateZ(0)" }}
       />
 
       {/* Central Liquid Glass Briefing HUD */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.90, y: 24, filter: "blur(12px)" }}
-        animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+        initial={{ opacity: 0, scale: 0.95, y: 14 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{
           opacity: 0,
-          scale: 1.04,
-          y: -24,
-          filter: "blur(20px)",
-          transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+          scale: 0.98,
+          y: -10,
+          transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
         }}
         transition={{
-          type: "spring",
-          stiffness: 280,
-          damping: 26,
-          mass: 0.8,
+          duration: 0.4,
+          ease: [0.16, 1, 0.3, 1],
         }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-lg p-6 sm:p-7 rounded-[2rem] border border-white/12 ring-1 ring-inset ring-white/10 bg-white/[0.04] dark:bg-black/60 backdrop-blur-2xl shadow-[0_32px_80px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_0_24px_rgba(255,255,255,0.03)] flex flex-col text-left overflow-hidden cursor-default"
+        className="relative w-full max-w-lg p-5 sm:p-6 rounded-[2rem] border border-white/12 ring-1 ring-inset ring-white/10 bg-white/[0.04] dark:bg-black/60 backdrop-blur-2xl shadow-[0_32px_80px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_0_24px_rgba(255,255,255,0.03)] flex flex-col text-left overflow-hidden cursor-default"
       >
         {/* Specular Ambient Reflection Sheen */}
-        <div className="absolute inset-x-0 top-0 h-32 rounded-t-[2rem] bg-gradient-to-b from-white/[0.08] via-white/[0.02] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-28 rounded-t-[2rem] bg-gradient-to-b from-white/[0.08] via-white/[0.02] to-transparent pointer-events-none" />
 
         {/* Authentic Liquid Glass Logo Showcase — 120 FPS Metal Accelerated */}
-        <div className="w-full h-40 sm:h-48 rounded-2xl overflow-hidden relative mb-4 bg-gradient-to-b from-black/90 via-black/75 to-[#1a0f05] border border-amber-400/40 shadow-2xl flex items-center justify-center p-4 relative">
+        <div className="w-full h-40 sm:h-48 rounded-2xl overflow-hidden relative mb-4 bg-gradient-to-b from-black/90 via-black/75 to-[#160b02] border border-amber-400/40 shadow-2xl flex items-center justify-center p-4 relative">
           {/* Rotating Ambient Caustic Liquid Halo */}
           <div
             className="absolute w-60 h-60 rounded-full pointer-events-none liquid-caustic-halo"
@@ -215,7 +195,7 @@ export function CinematicStartupIntro({
         </div>
 
         {/* Header: Logo, App Title & Live Telemetry Badge */}
-        <div className="flex items-center justify-between gap-3 mb-4 border-b border-white/10 pb-3">
+        <div className="flex items-center justify-between gap-3 mb-3.5 border-b border-white/10 pb-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-amber-500/15 border border-amber-400/35 p-1.5 flex items-center justify-center shrink-0 shadow-inner">
               <IBGermanAppLogo className="w-full h-full" />
@@ -246,7 +226,7 @@ export function CinematicStartupIntro({
         </div>
 
         {/* Priority Card: Next Focus / What Still Needs To Be Done */}
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-400/25 mb-3.5 relative overflow-hidden backdrop-blur-md">
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-400/25 mb-3 relative overflow-hidden backdrop-blur-md">
           <div className="flex items-center justify-between gap-2 mb-1">
             <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300">
               <Compass className="w-3 h-3 text-amber-400" /> Nächster Schwerpunkt • Still To Do
@@ -280,7 +260,7 @@ export function CinematicStartupIntro({
         </div>
 
         {/* Bento Status Grid: Syllabus Progress & Study Pulse */}
-        <div className="grid grid-cols-2 gap-3 mb-3.5 text-xs font-mono">
+        <div className="grid grid-cols-2 gap-3 mb-3 text-xs font-mono">
           {/* Progress Box */}
           <div className="p-3 rounded-2xl bg-black/40 border border-white/10 flex flex-col justify-between backdrop-blur-md">
             <div className="flex items-center justify-between text-slate-400 text-[10px] mb-1.5">
@@ -315,7 +295,7 @@ export function CinematicStartupIntro({
         </div>
 
         {/* High-Yield Grammar & Redemittel Anchor */}
-        <div className="px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 mb-3.5 text-[11px]">
+        <div className="px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 mb-3 text-[11px]">
           <span className="text-amber-300 font-bold font-mono text-[10px] uppercase block mb-0.5">
             Schlüsselsatz & Kriterium-A Merkhilfe
           </span>

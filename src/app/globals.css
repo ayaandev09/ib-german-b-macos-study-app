@@ -432,23 +432,24 @@ button[disabled],
 
 /* KaTeX Formula Enhancement */
 .katex-formula-wrapper {
-  font-size: 1.12rem;
-  color: #6ee7b7;
+  font-size: 0.88rem;
+  color: #fde047;
 }
 
 .katex-formula-wrapper .katex-display {
-  margin: 0.4em 0 !important;
+  margin: 0.25em 0 !important;
 }
 
 .katex .mord.text {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: #f8fafc;
 }
 
 .katex .frac-line {
   border-bottom-width: 1.5px !important;
-  border-color: rgba(110, 231, 183, 0.8) !important;
+  border-color: rgba(251, 191, 36, 0.8) !important;
 }
 
 /* Custom Scrollbars */
@@ -731,23 +732,24 @@ button[disabled],
 
 /* KaTeX Formula Enhancement */
 .katex-formula-wrapper {
-  font-size: 1.12rem;
-  color: #6ee7b7;
+  font-size: 0.88rem;
+  color: #fde047;
 }
 
 .katex-formula-wrapper .katex-display {
-  margin: 0.4em 0 !important;
+  margin: 0.25em 0 !important;
 }
 
 .katex .mord.text {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: #f8fafc;
 }
 
 .katex .frac-line {
   border-bottom-width: 1.5px !important;
-  border-color: rgba(110, 231, 183, 0.8) !important;
+  border-color: rgba(251, 191, 36, 0.8) !important;
 }
 
 /* Academic & Professional Notes Typography */

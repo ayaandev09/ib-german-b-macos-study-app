@@ -205,7 +205,7 @@ export function GrammarLabView() {
               </div>
 
               {/* KaTeX Math Formula Rendering */}
-              <div className="p-3.5 rounded-xl bg-black/60 border border-white/10 my-1 overflow-x-auto text-center flex items-center justify-center min-h-[52px]">
+              <div className="p-4 rounded-xl bg-black/75 border border-amber-400/20 my-1 overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden text-center flex items-center justify-center min-h-[64px]">
                 <MathFormula formula={selectedPoint.latexFormula || selectedPoint.formula} displayMode={true} />
               </div>
 

@@ -30,7 +30,7 @@ export function MathFormula({
 
   if (!html) {
     return (
-      <code className={`font-mono text-amber-300 ${className}`}>
+      <code className={`font-mono text-amber-300 text-xs ${className}`}>
         {formula}
       </code>
     );
@@ -38,7 +38,7 @@ export function MathFormula({
 
   return (
     <div
-      className={`katex-formula-wrapper overflow-x-auto select-all py-1 ${className}`}
+      className={`katex-formula-wrapper overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden select-all py-1 flex justify-center text-center w-full ${className}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
