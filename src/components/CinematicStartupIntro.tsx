@@ -60,9 +60,10 @@ export const CinematicStartupIntro: React.FC<CinematicStartupIntroProps> = ({
         transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
       }}
       onClick={handleDismiss}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center p-4 select-none bg-[#0b0906] overflow-hidden cursor-pointer"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center p-4 select-none overflow-hidden cursor-pointer"
       style={{
-        background: "radial-gradient(circle at 50% 50%, #1e160a 0%, #120e07 50%, #0b0906 100%)",
+        backgroundColor: "#060402",
+        backgroundImage: `radial-gradient(ellipse at 12% 8%, rgba(217, 119, 6, 0.32) 0%, transparent 46%), radial-gradient(ellipse at 88% 12%, rgba(153, 27, 27, 0.25) 0%, transparent 46%), radial-gradient(ellipse at 50% 108%, rgba(4, 120, 87, 0.28) 0%, transparent 62%), linear-gradient(180deg, #060402 0%, #150b05 52%, #060402 100%)`,
       }}
     >
       {/* Center Liquid Glass Logo Animation */}
@@ -81,7 +82,7 @@ export const CinematicStartupIntro: React.FC<CinematicStartupIntroProps> = ({
             logoColor="original"
             logoRelief={0.8}
             textColor="#fef3c7"
-            tileColor="#19140a"
+            tileColor="#180e05"
             background="transparent"
             depth={1.3}
             dispersion={1.15}
