@@ -78,11 +78,11 @@ export function GermanSidebar() {
       className={`shrink-0 liquid-glass-panel rounded-3xl flex flex-col h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-10 shadow-xl ${
         sidebarCollapsed
           ? "w-0 max-w-0 p-0 -mr-4 xl:-mr-5 border-0 opacity-0 pointer-events-none"
-          : "w-72 lg:w-80 p-3 sm:p-4 border border-white/10 opacity-100"
+          : "w-72 lg:w-80 p-0 border border-white/10 opacity-100"
       }`}
     >
       <div
-        className={`w-72 lg:w-80 flex flex-col h-full min-h-0 shrink-0 gap-2.5 transition-opacity duration-200 ${
+        className={`w-72 lg:w-80 p-3 sm:p-4 flex flex-col h-full min-h-0 shrink-0 gap-2.5 transition-opacity duration-200 ${
           sidebarCollapsed ? "opacity-0 pointer-events-none invisible" : "opacity-100 visible"
         }`}
       >
