@@ -132,7 +132,8 @@ export default function IBGermanBStudyDashboardPage() {
         {/* Middle Column: Top Command Bar & Active Study View */}
         <main
           data-tour="main-workspace"
-          className="flex-1 min-w-0 w-full pb-36 flex flex-col"
+          className="flex-1 min-w-0 w-full pb-36 flex flex-col transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          style={{ containerType: "inline-size" }}
         >
           {/* Top Command Bar */}
           <TopCommandBar

@@ -525,7 +525,7 @@ export function ThemesBentoView() {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            <div className="bento-adaptive-3 gap-2.5">
               {activeTopic.vocabBullets.map((v, i) => (
                 <div
                   key={i}
@@ -606,7 +606,7 @@ export function ThemesBentoView() {
         </div>
 
         {/* Themed 25-Subtopics Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+        <div className="bento-adaptive-3 gap-3.5">
           {filteredTopics.map((sub) => {
             const isCompleted = completedTopics.includes(sub.id);
             const isCurrentActive = sub.id === activeTopic.id;
