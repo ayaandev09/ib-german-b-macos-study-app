@@ -72,16 +72,21 @@ export function GermanSidebar() {
   const totalSubtopics = ALL_SUBTOPICS.length;
   const progressPercent = totalSubtopics > 0 ? Math.round((totalCompleted / totalSubtopics) * 100) : 0;
 
-  if (sidebarCollapsed) {
-    return null;
-  }
-
   return (
     <aside
       data-tour="syllabus-sidebar"
-      className="w-72 lg:w-80 shrink-0 liquid-glass-panel rounded-3xl p-3 sm:p-4 flex flex-col gap-2.5 h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all z-10 border border-white/10 shadow-xl"
+      className={`shrink-0 liquid-glass-panel rounded-3xl flex flex-col h-[calc(100vh-2rem)] sticky top-4 select-none overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] z-10 shadow-xl ${
+        sidebarCollapsed
+          ? "w-0 max-w-0 p-0 -mr-4 xl:-mr-5 border-0 opacity-0 pointer-events-none"
+          : "w-72 lg:w-80 p-3 sm:p-4 border border-white/10 opacity-100"
+      }`}
     >
-      {/* Brand Header Matching Macbeth */}
+      <div
+        className={`w-72 lg:w-80 flex flex-col h-full min-h-0 shrink-0 gap-2.5 transition-opacity duration-200 ${
+          sidebarCollapsed ? "opacity-0 pointer-events-none invisible" : "opacity-100 visible"
+        }`}
+      >
+        {/* Brand Header Matching Macbeth */}
       <div className="flex items-center justify-between pb-2.5 border-b border-white/10 shrink-0">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400/20 via-orange-500/15 to-rose-500/20 border border-amber-400/35 flex items-center justify-center p-1 shadow-inner shrink-0">
@@ -257,6 +262,7 @@ export function GermanSidebar() {
       <div className="mt-auto pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-slate-400 shrink-0">
         <span>IB GERMAN B SL/HL</span>
         <span>5 THEMEN • 25 SUBTHEMEN</span>
+      </div>
       </div>
     </aside>
   );
