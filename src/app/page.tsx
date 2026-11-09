@@ -10,6 +10,7 @@ import { GrammarLabView } from "@/components/GrammarLabView";
 import { TextsortenVaultView } from "@/components/TextsortenVaultView";
 import { RedemittelDossierView } from "@/components/RedemittelDossierView";
 import { ExamMasteryView } from "@/components/ExamMasteryView";
+import { TestDafView } from "@/components/TestDafView";
 import { LiteratureOralLabView } from "@/components/LiteratureOralLabView";
 import { CinematicStartupIntro } from "@/components/CinematicStartupIntro";
 import { AmbientAuroraCanvas } from "@/components/AmbientAuroraCanvas";
@@ -101,6 +102,7 @@ export default function IBGermanBStudyDashboardPage() {
           "redemittel",
           "pruefung",
           "literatur",
+          "testdaf",
         ];
         const idx = parseInt(e.key, 10) - 1;
         if (modes[idx]) {
@@ -152,6 +154,7 @@ export default function IBGermanBStudyDashboardPage() {
             {viewMode === "redemittel" && <RedemittelDossierView />}
             {viewMode === "pruefung" && <ExamMasteryView />}
             {viewMode === "literatur" && <LiteratureOralLabView />}
+            {viewMode === "testdaf" && <TestDafView />}
           </div>
         </main>
 

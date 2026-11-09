@@ -77,6 +77,11 @@ export function TopCommandBar({
       label: "Literatur",
       icon: <BookOpenCheck className="w-3.5 h-3.5" />,
     },
+    {
+      id: "testdaf",
+      label: "TestDaF",
+      icon: <GraduationCap className="w-3.5 h-3.5" />,
+    },
   ];
 
   return (

@@ -10,7 +10,8 @@ export type GermanNavMode =
   | "textsorten"
   | "redemittel"
   | "pruefung"
-  | "literatur";
+  | "literatur"
+  | "testdaf";
 
 export type AcademicStyle = "jakarta" | "newsreader" | "garamond";
 
