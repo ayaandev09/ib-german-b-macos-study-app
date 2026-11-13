@@ -5,6 +5,7 @@ import { GRAMMAR_POINTS } from "@/data/grammar";
 import { ALL_TEXTSORTEN } from "@/data/textsorten";
 
 export type GermanNavMode =
+  | "home"
   | "themen"
   | "grammatik"
   | "textsorten"
@@ -116,7 +117,7 @@ export const useGermanStudyStore = create<GermanStudyState>((set, get) => {
   const initialPracticedTextsorten = loadFromStorage("practicedTextsorten", ["artikel"]);
 
   return {
-    viewMode: "themen",
+    viewMode: "home",
     setViewMode: (mode) => set({ viewMode: mode }),
     activeTopicId: "sub-1-1",
     setActiveTopic: (topicId) => {

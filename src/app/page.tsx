@@ -3,7 +3,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { TopCommandBar } from "@/components/TopCommandBar";
-import { GermanSidebar } from "@/components/GermanSidebar";
+import { SideNav } from "@/components/SideNav";
+import { SceneSwitcher } from "@/components/SceneSwitcher";
+import { HomeDashboard } from "@/components/HomeDashboard";
 import { GermanRightInspector } from "@/components/GermanRightInspector";
 import { ThemesBentoView } from "@/components/ThemesBentoView";
 import { GrammarLabView } from "@/components/GrammarLabView";
@@ -129,7 +131,7 @@ export default function IBGermanBStudyDashboardPage() {
         }`}
       >
         {/* Left Column: Syllabus Sidebar */}
-        <GermanSidebar />
+        <SideNav />
 
         {/* Middle Column: Top Command Bar & Active Study View */}
         <main
@@ -144,10 +146,12 @@ export default function IBGermanBStudyDashboardPage() {
           />
 
           {/* Mini Homepage & Live Widget Telemetry Hub (Macbeth Match) */}
-          <StudyMiniHomepage />
+          
 
           {/* Active View Container */}
           <div className="space-y-4">
+            {viewMode === "home" && <HomeDashboard />}
+            {viewMode === "themen" && <SceneSwitcher />}
             {viewMode === "themen" && <ThemesBentoView />}
             {viewMode === "grammatik" && <GrammarLabView />}
             {viewMode === "textsorten" && <TextsortenVaultView />}
